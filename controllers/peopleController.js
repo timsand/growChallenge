@@ -1,7 +1,4 @@
-import {
-  getPeople as getPeopleFromAPI,
-  getAllPeople,
-} from "../providers/index.js";
+import { getAllPeople } from "../providers/index.js";
 
 export const getPeople = async (req, res) => {
   console.log("Getting people!");

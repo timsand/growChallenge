@@ -27,8 +27,6 @@ export const getPlanets = async (page = 1) => {
       return response.data;
     }
   } catch (e) {
-    // In production, this would be handled more gracefully... I'm familiar with
-    // throwing a custom HTTP error that then gets handled by error handler middleware
     console.log(e);
     throw new Error("Request failed");
   }
@@ -39,10 +37,7 @@ export const getPlanets = async (page = 1) => {
 // will be agnostic to the number of people actually in the API as long as the pageSize does not change
 export const getAllPeople = async (pageSize = 10) => {
   const { count, results: firstPageResult } = await getPeople();
-  // TODO - Check valid results
   const lastPage = getLastPage(count, pageSize);
-
-  console.log("PEOPLE LAST PAGE ", lastPage);
 
   const networkResults = [];
   for (let i = 1 + 1; i <= lastPage; i++) {
@@ -59,10 +54,7 @@ export const getAllPeople = async (pageSize = 10) => {
 // NOTE: As you can see, there's a bit of code reuse with the above method. There's definitely room to optimize this and avoid duplicate code
 export const getAllPlanets = async (pageSize = 10) => {
   const { count, results: firstPageResult } = await getPlanets();
-  // TODO - Check valid results
   const lastPage = getLastPage(count, pageSize);
-
-  console.log("PLANETS LAST PAGE ", lastPage);
 
   const networkResults = [];
   for (let i = 1 + 1; i <= lastPage; i++) {

@@ -1,6 +1,6 @@
 # Take Home Challenge
 
-## Running Locally\
+## Running Locally
 
 This app requires Node.JS version 14 or higher to run.
 

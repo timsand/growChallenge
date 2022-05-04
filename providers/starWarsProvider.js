@@ -27,16 +27,14 @@ export const getAllPeople = async (offset = 10) => {
   const lastPage = getLastPage(count, offset);
 
   const networkResults = [];
-  for (let i = 1; i <= lastPage; i++) {
-    console.log(i);
+  for (let i = 1 + 1; i <= lastPage; i++) {
     networkResults.push(getPeople(i));
   }
 
   const networkResultsSettled = await Promise.allSettled(networkResults);
 
   return networkResultsSettled.reduce((acc, cur) => {
-    acc.push(cur.value.results);
-    return acc;
+    return [...acc, ...cur.value.results]; // There's room to maybe optimize time complexity here
   }, firstPageResult);
 };
 

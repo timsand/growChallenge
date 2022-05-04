@@ -2,8 +2,6 @@ import express from "express";
 import { config } from "./config.js";
 import { router } from "./router.js";
 
-console.log(config);
-
 const app = express();
 
 app.use("/", router);

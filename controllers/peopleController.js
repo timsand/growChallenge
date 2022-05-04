@@ -42,10 +42,9 @@ const sortPeople = (people, sort) => {
 
   // Sort names
   return people.sort((a, b) => {
-    // Does not appear to be any unknown values in name, but we still need to handle full names
-    // Assuming that the data won't have more than one space in it at any given time
-    const personOne = a[s].replace(/\s/g, "").toLocaleLowerCase();
-    const personTwo = b[s].replace(/\s/g, "").toLocaleLowerCase();
+    // Handle casing (just in case)
+    const personOne = a[s].toLocaleLowerCase();
+    const personTwo = b[s].toLocaleLowerCase();
 
     if (personOne === personTwo) {
       return 0;
